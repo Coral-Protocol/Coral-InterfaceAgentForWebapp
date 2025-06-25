@@ -1,8 +1,8 @@
-## [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
+## [Interface Agent for Webapp](https://github.com/Coral-Protocol/Interface-Agent-for-Webapp)
 
 User Interaction Agent is the main interface for receiving user instructions, coordinating multi-agent tasks, and logging conversations via the terminal.
 
-NOTE: This is a modified repo of the original interface agent with additional Fast api endpoints to use with UI.
+NOTE: This is a modified repo of the original [interface agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) with additional Fast api endpoints to use with UI.
 
 ## Responsibility
 User Interaction Agent acts as the main interface for coordinating user instructions and managing multi-agent tasks. It interacts with the user via terminal and orchestrates requests among various agents, ensuring seamless workflow and conversation logging.
@@ -48,7 +48,7 @@ interface:
 
   runtime:
     type: "docker"
-    image: "sd2879/coral-interface-agent:latest"
+    image: "coralprotocol/coral-interface-agent-for-webapp:latest"
     environment:
       - name: "GROQ_API_KEY"
         from: "GROQ_API_KEY" 
@@ -65,10 +65,10 @@ Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) i
 
 ```bash
 # In a new terminal clone the repository:
-git clone https://github.com/Coral-Protocol/Coral-Interface-Agent.git
+git clone https://github.com/Coral-Protocol/Interface-Agent-for-Webapp
 
 # Navigate to the project directory:
-cd Coral-Interface-Agent
+cd Interface-Agent-for-Webapp
 
 # Install `uv`:
 pip install uv
@@ -112,6 +112,7 @@ uv run python 0-langchain-interface.py
 
 
 ```bash
+#NOTE the input will be given to the UI part and the output will also be received in the UI.
 # Input:
 Agent: How can I assist you today?
 
@@ -122,6 +123,6 @@ The agent will interact with you directly in the console and coordinate with oth
 
 
 ## Creator Details
-- **Name**: Suman Deb
+- **Name**: Ahsen Tahir
 - **Affiliation**: Coral Protocol
 - **Contact**: [Discord](https://discord.com/invite/Xjm892dtt3)
