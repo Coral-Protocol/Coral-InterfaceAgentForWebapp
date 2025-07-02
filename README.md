@@ -1,8 +1,8 @@
-## [Interface Agent for Webapp](https://github.com/Coral-Protocol/Interface-Agent-for-Webapp)
+## [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
+
+This is the modified interface agent with Fast api endpoints for the UI.
 
 User Interaction Agent is the main interface for receiving user instructions, coordinating multi-agent tasks, and logging conversations via the terminal.
-
-NOTE: This is a modified repo of the original [interface agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) with additional Fast api endpoints to use with UI.
 
 ## Responsibility
 User Interaction Agent acts as the main interface for coordinating user instructions and managing multi-agent tasks. It interacts with the user via terminal and orchestrates requests among various agents, ensuring seamless workflow and conversation logging.
@@ -15,44 +15,7 @@ User Interaction Agent acts as the main interface for coordinating user instruct
 - **License**: MIT 
 
 ## Use the Agent in Orchestration
-You will need to have API keys from [Groq](https://console.groq.com/keys).
-
-### Executable Agent Definition 
-```yaml
-coral-interface:
-  options:
-    - name: "GROQ_API_KEY" 
-      type: "string"
-      description: "Groq API Key"
-  runtime:
-    type: "executable"
-    command:
-      - "bash"
-      - "-c"
-      - "cd ../Coral-Interface-Agent && uv sync && uv run python 0-langchain-interface.py"
-    environment:
-      - name: "GROQ_API_KEY"
-        from: "GROQ_API_KEY" 
-```
-
-### Docker Agent Definition 
-```yaml
-interface:
-  options:
-    - name: "GROQ_API_KEY"
-      type: "string"
-      description: "Groq API Key"
-    - name: "HUMAN_RESPONSE"
-      type: "string"
-      description: "Human response to be used in the interface agent"
-
-  runtime:
-    type: "docker"
-    image: "coralprotocol/coral-interface-agent-for-webapp:latest"
-    environment:
-      - name: "GROQ_API_KEY"
-        from: "GROQ_API_KEY" 
-```
+You will need to have API keys from [Openai](https://platform.openai.com/api-keys)/[Groq](https://console.groq.com/keys).
 
 ## Use the Agent  
 
@@ -65,7 +28,7 @@ Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) i
 
 ```bash
 # In a new terminal clone the repository:
-git clone https://github.com/Coral-Protocol/Interface-Agent-for-Webapp
+git clone https://github.com/Coral-Protocol/Interface-Agent-for-Webapp.git
 
 # Navigate to the project directory:
 cd Interface-Agent-for-Webapp
@@ -76,6 +39,18 @@ pip install uv
 # Install dependencies from `pyproject.toml` using `uv`:
 uv sync
 ```
+### Troubleshooting
+
+If you encounter errors related to post_writer, run these commands:
+
+```bash
+# Copy the client sse.py from utils to mcp package (Linux/ Mac)
+cp -r utils/sse.py .venv/lib/python3.13/site-packages/mcp/client/sse.py
+
+# OR Copy this for Windows
+cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
+```
+
 
 </details>
  
@@ -101,7 +76,7 @@ cp -r .env_sample .env
 
 ```bash
 # Run the agent using `uv`:
-uv run python 0-langchain-interface.py
+uv run python main.py
 ```
 </details>
 
@@ -112,7 +87,6 @@ uv run python 0-langchain-interface.py
 
 
 ```bash
-#NOTE the input will be given to the UI part and the output will also be received in the UI.
 # Input:
 Agent: How can I assist you today?
 
@@ -123,6 +97,6 @@ The agent will interact with you directly in the console and coordinate with oth
 
 
 ## Creator Details
-- **Name**: Ahsen Tahir
+- **Name**: Suman Deb
 - **Affiliation**: Coral Protocol
 - **Contact**: [Discord](https://discord.com/invite/Xjm892dtt3)
