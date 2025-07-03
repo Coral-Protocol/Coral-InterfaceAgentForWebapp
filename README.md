@@ -28,10 +28,10 @@ Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) i
 
 ```bash
 # In a new terminal clone the repository:
-git clone https://github.com/Coral-Protocol/Interface-Agent-for-Webapp.git
+git clone https://github.com/Coral-Protocol/Coral-InterfaceAgentForWebapp.git
 
 # Navigate to the project directory:
-cd Interface-Agent-for-Webapp
+cd Coral-InterfaceAgentForWebapp
 
 # Install `uv`:
 pip install uv
